@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6D17CD3A1EEFF25700235D2F /* Matrix.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D17CD391EEFF25700235D2F /* Matrix.m */; };
 		6D5BE8941EEE63AA00346B25 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D5BE8931EEE63AA00346B25 /* MainViewController.m */; };
 		6D5BE8971EEE680600346B25 /* LATextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D5BE8961EEE680600346B25 /* LATextField.m */; };
 		6D6821901EEE332A006BD1A0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D68218F1EEE332A006BD1A0 /* main.m */; };
@@ -18,6 +19,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6D17CD381EEFF25700235D2F /* Matrix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Matrix.h; sourceTree = "<group>"; };
+		6D17CD391EEFF25700235D2F /* Matrix.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Matrix.m; sourceTree = "<group>"; };
 		6D5BE8921EEE63AA00346B25 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		6D5BE8931EEE63AA00346B25 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		6D5BE8951EEE680600346B25 /* LATextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LATextField.h; sourceTree = "<group>"; };
@@ -46,6 +49,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6D17CD341EEFDD9B00235D2F /* LAKeyBoard */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = LAKeyBoard;
+			sourceTree = "<group>";
+		};
 		6D6821821EEE332A006BD1A0 = {
 			isa = PBXGroup;
 			children = (
@@ -66,12 +76,15 @@
 		6D68218D1EEE332A006BD1A0 /* Linear Algebra */ = {
 			isa = PBXGroup;
 			children = (
+				6D17CD341EEFDD9B00235D2F /* LAKeyBoard */,
 				6D6821911EEE332A006BD1A0 /* AppDelegate.h */,
 				6D6821921EEE332A006BD1A0 /* AppDelegate.m */,
 				6D6821A51EEE334A006BD1A0 /* LAView.h */,
 				6D6821A61EEE334A006BD1A0 /* LAView.m */,
 				6D5BE8951EEE680600346B25 /* LATextField.h */,
 				6D5BE8961EEE680600346B25 /* LATextField.m */,
+				6D17CD381EEFF25700235D2F /* Matrix.h */,
+				6D17CD391EEFF25700235D2F /* Matrix.m */,
 				6D5BE8921EEE63AA00346B25 /* MainViewController.h */,
 				6D5BE8931EEE63AA00346B25 /* MainViewController.m */,
 				6D6821971EEE332A006BD1A0 /* Main.storyboard */,
@@ -173,6 +186,7 @@
 			files = (
 				6D6821931EEE332A006BD1A0 /* AppDelegate.m in Sources */,
 				6D6821901EEE332A006BD1A0 /* main.m in Sources */,
+				6D17CD3A1EEFF25700235D2F /* Matrix.m in Sources */,
 				6D5BE8941EEE63AA00346B25 /* MainViewController.m in Sources */,
 				6D6821A71EEE334A006BD1A0 /* LAView.m in Sources */,
 				6D5BE8971EEE680600346B25 /* LATextField.m in Sources */,

@@ -30,6 +30,7 @@ static NSString * MainVCTableViewCellID = @"MainVCTableViewCellID";
     
     [self initVar];
     [self createUI];
+    
 }
 
 - (void)initVar
@@ -52,16 +53,18 @@ static NSString * MainVCTableViewCellID = @"MainVCTableViewCellID";
 -(void)createUI
 {
     self.view.backgroundColor = [UIColor grayColor];
-    
-    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height - 50) style:UITableViewStylePlain];
-    self.tableView.delegate = self;
-    self.tableView.dataSource = self;
-    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:MainVCTableViewCellID];
-    [self.view addSubview:self.tableView];
-    
-    self.textField = [[LATextField alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.tableView.frame), self.view.frame.size.width, 50)];
-    [self.textField.okBtn addTarget:self action:@selector(okBtnTouched:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:self.textField];
+//    
+//    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height - 50) style:UITableViewStylePlain];
+//    self.tableView.delegate = self;
+//    self.tableView.dataSource = self;
+//    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:MainVCTableViewCellID];
+//    [self.view addSubview:self.tableView];
+//    
+//    self.textField = [[LATextField alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.tableView.frame), self.view.frame.size.width, 50)];
+//    [self.textField.okBtn addTarget:self action:@selector(okBtnTouched:) forControlEvents:UIControlEventTouchUpInside];
+//    [self.view addSubview:self.textField];
+    LATextFieldView * textView = [[LATextFieldView alloc] initWithFrame:CGRectMake(0, [UIScreen mainScreen].bounds.size.height * 0.55, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height * 0.45)];
+    [self.view addSubview:textView];
 }
 
 #pragma mark  textfield events
@@ -105,7 +108,6 @@ static NSString * MainVCTableViewCellID = @"MainVCTableViewCellID";
     [_dataSource addObject:self.textField.text];
     [self.tableView reloadData];
     [self.textField resignFirstResponder];
-    
 }
 
 #pragma mark  tableView delegate

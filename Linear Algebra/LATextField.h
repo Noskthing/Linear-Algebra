@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+@interface LATextFieldView : UIView
+
+@end
+
 @interface LATextField : UIView
 
 @property (nonatomic,strong)UIButton * okBtn;
@@ -15,4 +19,5 @@
 @property (nonatomic,strong)NSString * text;
 
 - (void)resignFirstResponder;
+
 @end
