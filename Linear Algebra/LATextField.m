@@ -7,7 +7,7 @@
 //
 
 #import "LATextField.h"
-#import "Matrix.h"
+
 
 #pragma mark LATextFieldButton
 @interface LATextFieldButton : UIView
@@ -35,8 +35,8 @@
         self.button.titleLabel.font = [UIFont fontWithName:@"Helvetica-Thin" size:20.f];;
         self.button.frame = CGRectMake(0.4, 0.4, frame.size.width - 0.4, frame.size.height - 0.4);
         self.button.backgroundColor = [UIColor colorWithRed:231/255.0 green:232/255.0 blue:233/255.0 alpha:1];
-        [self.button setBackgroundImage:[LATextFieldButton imageColor:[UIColor colorWithRed:247/255. green:247/255. blue:247/255. alpha:1.]] forState:UIControlStateNormal];
-        [self.button setBackgroundImage:[LATextFieldButton imageColor:[UIColor colorWithRed:231/255.0 green:232/255.0 blue:233/255.0 alpha:1]] forState:UIControlStateHighlighted];
+        [self.button setBackgroundImage:[LATextFieldButton imageColor:[UIColor colorWithRed:250/255. green:250/255. blue:250/255. alpha:.8]] forState:UIControlStateNormal];
+        [self.button setBackgroundImage:[LATextFieldButton imageColor:[UIColor colorWithRed:243/255.0 green:243/255.0 blue:243/255.0 alpha:1.]] forState:UIControlStateHighlighted];
         [self addSubview:self.button];
     }
     return self;
@@ -68,9 +68,11 @@
 
 @interface LATextFieldView ()
 
-@property (nonatomic, copy)NSMutableString * tempStr;
+@property (nonatomic, copy)NSMutableArray * tempStrArray;
 
 @property (nonatomic, assign)BOOL isFloat;
+
+@property (nonatomic, assign)BOOL isNegative;
 
 @property (nonatomic, strong)Matrix * matrix;
 
@@ -85,8 +87,8 @@ static const NSInteger column = 4;
 {
     if(self = [super initWithFrame:frame])
     {
-        _tempStr = [NSMutableString string];
-        _isFloat = NO;
+        _tempStrArray = [NSMutableArray array];
+        [self initVar];
         _matrix = [[Matrix alloc] init];
         
         CGFloat buttonWidth = frame.size.width/column;
@@ -166,10 +168,25 @@ static const NSInteger column = 4;
     return self;
 }
 
+- (void)initVar
+{
+    _isFloat = NO;
+    _isNegative = NO;
+    [_tempStrArray removeAllObjects];
+    
+    UIButton * pointBtn = [self viewWithTag:50 + 8];
+    pointBtn.enabled = YES;
+}
+
 - (void)numberButtonTouched:(UIButton *)button
 {
     NSLog(@"num %ld clicked!",button.tag - 20);
-    [_tempStr appendString:[NSString stringWithFormat:@"%ld",button.tag - 20]];
+    if (button.tag - 20 == 0 && _tempStrArray.count == 0)
+    {
+        return;
+    }
+    [_tempStrArray addObject:[NSString stringWithFormat:@"%ld",button.tag - 20]];
+    [self.delegate textFieldViewNumberButtonTouched:button Matrix:_matrix Chars:_tempStrArray IsNegative:_isNegative TextFieldView:self];
 }
 
 - (void)symbolButtonTouched:(UIButton *)button
@@ -186,6 +203,8 @@ static const NSInteger column = 4;
         {
             //A-1
             NSLog(@"A-1 click");
+            Matrix * a = [_matrix transpose];
+            [a log];
         }
             break;
         case 2:
@@ -199,6 +218,52 @@ static const NSInteger column = 4;
         {
             //C
             NSLog(@"C click");
+            if (_tempStrArray.count > 0)
+            {
+                if ([_tempStrArray[_tempStrArray.count - 1] isEqualToString:@"."])
+                {
+                    self.isFloat = NO;
+                }
+                [_tempStrArray removeObjectAtIndex:_tempStrArray.count - 1];
+            }
+            else
+            {
+                if (self.isNegative)
+                {
+                    self.isNegative = NO;
+                }
+                else
+                {
+                    _tempStrArray = [_matrix deleteObject];
+                    
+                    if (_tempStrArray.count == 0)
+                    {
+                        self.isFloat = NO;
+                        self.isNegative = NO;
+                        break;
+                    }
+                    
+                    if ([_tempStrArray[0] isEqualToString:@"-"])
+                    {
+                        self.isNegative = YES;
+                        [_tempStrArray removeObjectAtIndex:0];
+                    }
+                    else
+                    {
+                        self.isNegative = NO;
+                    }
+                    
+                    if ([_tempStrArray[_tempStrArray.count - 1] isEqualToString:@"."])
+                    {
+                        self.isFloat = YES;
+                        [_tempStrArray removeObjectAtIndex:_tempStrArray.count - 1];
+                    }
+                    else
+                    {
+                        self.isFloat = NO;
+                    }
+                }
+            }
         }
             break;
         case 4:
@@ -211,7 +276,7 @@ static const NSInteger column = 4;
         {
             //huanhang
             NSLog(@"huanhang click");
-            _tempStr = [[NSMutableString alloc] init];
+            [self initVar];
             [_matrix newRow];
         }
             break;
@@ -219,32 +284,62 @@ static const NSInteger column = 4;
         {
             //next
             NSLog(@"next click");
-            button.enabled = [_matrix addObject:_tempStr];
-            _tempStr = [[NSMutableString alloc] init];
+            NSMutableString * str = [NSMutableString string];
+            if (_tempStrArray.count == 0)
+            {
+                [str appendString:@"0"];
+            }
+            else
+            {
+                if (_isNegative)
+                {
+                    [str appendString:@"-"];
+                }
+                for (NSString * s in _tempStrArray)
+                {
+                    [str appendString:s];
+                }
+            }
+            button.enabled = [_matrix addObject:str];
+            [self initVar];
         }
             break;
         case 7:
         {
             //equal
             NSLog(@"equal click");
-            
         }
             break;
         case 8:
         {
             //.
-            NSLog(@". click");
+            if (!self.isFloat)
+            {
+                NSLog(@". click");
+                self.isFloat = YES;
+                if (_tempStrArray.count == 0)
+                {
+                    [_tempStrArray addObject:@"0"];
+                }
+                [_tempStrArray addObject:@"."];
+                button.enabled = NO;
+            }
         }
             break;
         case 9:
         {
             //+/-
             NSLog(@"+/- click");
+            _isNegative = !_isNegative;
         }
             break;
         default:
             break;
     }
+    
+    UIButton * nextBtn = [self viewWithTag:50 + 6];
+    nextBtn.enabled = ![_matrix isFull];
+    [self.delegate textFieldViewSymbolButtonTouched:button Matrix:_matrix Chars:_tempStrArray IsNegative:_isNegative TextFieldView:self];
 }
 @end
 

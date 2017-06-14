@@ -16,7 +16,19 @@
 
 @property (nonatomic, assign)NSInteger currentColumn;
 
+#pragma mark others
 - (void)log;
+- (BOOL)isFull;
+- (Matrix *)transpose;
+
+#pragma mark add methods
 - (void)newRow;
 - (BOOL)addObject:(id)object;
+- (void)setDataSource:(NSMutableArray *)datasource;
+
+#pragma mark delete methods
+- (id)deleteObject;
+
+#pragma mark  get methods
+- (id)getObjectAtRow:(NSInteger)row Column:(NSInteger)column;
 @end

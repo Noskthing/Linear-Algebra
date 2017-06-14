@@ -7,34 +7,39 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6D17CD3A1EEFF25700235D2F /* Matrix.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D17CD391EEFF25700235D2F /* Matrix.m */; };
-		6D5BE8941EEE63AA00346B25 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D5BE8931EEE63AA00346B25 /* MainViewController.m */; };
-		6D5BE8971EEE680600346B25 /* LATextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D5BE8961EEE680600346B25 /* LATextField.m */; };
+		6D1C41C51EF1570C00E0FF49 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D1C41B81EF1570C00E0FF49 /* AppDelegate.m */; };
+		6D1C41C61EF1570C00E0FF49 /* LAView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D1C41BA1EF1570C00E0FF49 /* LAView.m */; };
+		6D1C41C71EF1570C00E0FF49 /* LATextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D1C41BC1EF1570C00E0FF49 /* LATextField.m */; };
+		6D1C41C81EF1570C00E0FF49 /* Matrix.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D1C41BE1EF1570C00E0FF49 /* Matrix.m */; };
+		6D1C41C91EF1570C00E0FF49 /* NumberEditView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D1C41C01EF1570C00E0FF49 /* NumberEditView.m */; };
+		6D1C41CA1EF1570C00E0FF49 /* NumberEditView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D1C41C11EF1570C00E0FF49 /* NumberEditView.xib */; };
+		6D1C41CB1EF1570C00E0FF49 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D1C41C31EF1570C00E0FF49 /* MainViewController.m */; };
+		6D1C41CC1EF1570C00E0FF49 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D1C41C41EF1570C00E0FF49 /* Main.storyboard */; };
 		6D6821901EEE332A006BD1A0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D68218F1EEE332A006BD1A0 /* main.m */; };
-		6D6821931EEE332A006BD1A0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D6821921EEE332A006BD1A0 /* AppDelegate.m */; };
-		6D6821991EEE332A006BD1A0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D6821971EEE332A006BD1A0 /* Main.storyboard */; };
 		6D68219B1EEE332A006BD1A0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6D68219A1EEE332A006BD1A0 /* Assets.xcassets */; };
 		6D68219E1EEE332A006BD1A0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D68219C1EEE332A006BD1A0 /* LaunchScreen.storyboard */; };
-		6D6821A71EEE334A006BD1A0 /* LAView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D6821A61EEE334A006BD1A0 /* LAView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		6D17CD381EEFF25700235D2F /* Matrix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Matrix.h; sourceTree = "<group>"; };
-		6D17CD391EEFF25700235D2F /* Matrix.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Matrix.m; sourceTree = "<group>"; };
-		6D5BE8921EEE63AA00346B25 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
-		6D5BE8931EEE63AA00346B25 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
-		6D5BE8951EEE680600346B25 /* LATextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LATextField.h; sourceTree = "<group>"; };
-		6D5BE8961EEE680600346B25 /* LATextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LATextField.m; sourceTree = "<group>"; };
+		6D1C41B71EF1570C00E0FF49 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		6D1C41B81EF1570C00E0FF49 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		6D1C41B91EF1570C00E0FF49 /* LAView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LAView.h; sourceTree = "<group>"; };
+		6D1C41BA1EF1570C00E0FF49 /* LAView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LAView.m; sourceTree = "<group>"; };
+		6D1C41BB1EF1570C00E0FF49 /* LATextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LATextField.h; sourceTree = "<group>"; };
+		6D1C41BC1EF1570C00E0FF49 /* LATextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LATextField.m; sourceTree = "<group>"; };
+		6D1C41BD1EF1570C00E0FF49 /* Matrix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Matrix.h; sourceTree = "<group>"; };
+		6D1C41BE1EF1570C00E0FF49 /* Matrix.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Matrix.m; sourceTree = "<group>"; };
+		6D1C41BF1EF1570C00E0FF49 /* NumberEditView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NumberEditView.h; sourceTree = "<group>"; };
+		6D1C41C01EF1570C00E0FF49 /* NumberEditView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NumberEditView.m; sourceTree = "<group>"; };
+		6D1C41C11EF1570C00E0FF49 /* NumberEditView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NumberEditView.xib; sourceTree = "<group>"; };
+		6D1C41C21EF1570C00E0FF49 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		6D1C41C31EF1570C00E0FF49 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		6D1C41C41EF1570C00E0FF49 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		6D68218B1EEE332A006BD1A0 /* Linear Algebra.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Linear Algebra.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D68218F1EEE332A006BD1A0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		6D6821911EEE332A006BD1A0 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		6D6821921EEE332A006BD1A0 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		6D6821981EEE332A006BD1A0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		6D68219A1EEE332A006BD1A0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6D68219D1EEE332A006BD1A0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6D68219F1EEE332A006BD1A0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6D6821A51EEE334A006BD1A0 /* LAView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LAView.h; sourceTree = "<group>"; };
-		6D6821A61EEE334A006BD1A0 /* LAView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LAView.m; sourceTree = "<group>"; };
 		6D6821A91EEE3390006BD1A0 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -49,13 +54,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		6D17CD341EEFDD9B00235D2F /* LAKeyBoard */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = LAKeyBoard;
-			sourceTree = "<group>";
-		};
 		6D6821821EEE332A006BD1A0 = {
 			isa = PBXGroup;
 			children = (
@@ -76,18 +74,20 @@
 		6D68218D1EEE332A006BD1A0 /* Linear Algebra */ = {
 			isa = PBXGroup;
 			children = (
-				6D17CD341EEFDD9B00235D2F /* LAKeyBoard */,
-				6D6821911EEE332A006BD1A0 /* AppDelegate.h */,
-				6D6821921EEE332A006BD1A0 /* AppDelegate.m */,
-				6D6821A51EEE334A006BD1A0 /* LAView.h */,
-				6D6821A61EEE334A006BD1A0 /* LAView.m */,
-				6D5BE8951EEE680600346B25 /* LATextField.h */,
-				6D5BE8961EEE680600346B25 /* LATextField.m */,
-				6D17CD381EEFF25700235D2F /* Matrix.h */,
-				6D17CD391EEFF25700235D2F /* Matrix.m */,
-				6D5BE8921EEE63AA00346B25 /* MainViewController.h */,
-				6D5BE8931EEE63AA00346B25 /* MainViewController.m */,
-				6D6821971EEE332A006BD1A0 /* Main.storyboard */,
+				6D1C41B71EF1570C00E0FF49 /* AppDelegate.h */,
+				6D1C41B81EF1570C00E0FF49 /* AppDelegate.m */,
+				6D1C41B91EF1570C00E0FF49 /* LAView.h */,
+				6D1C41BA1EF1570C00E0FF49 /* LAView.m */,
+				6D1C41BB1EF1570C00E0FF49 /* LATextField.h */,
+				6D1C41BC1EF1570C00E0FF49 /* LATextField.m */,
+				6D1C41BD1EF1570C00E0FF49 /* Matrix.h */,
+				6D1C41BE1EF1570C00E0FF49 /* Matrix.m */,
+				6D1C41BF1EF1570C00E0FF49 /* NumberEditView.h */,
+				6D1C41C01EF1570C00E0FF49 /* NumberEditView.m */,
+				6D1C41C11EF1570C00E0FF49 /* NumberEditView.xib */,
+				6D1C41C21EF1570C00E0FF49 /* MainViewController.h */,
+				6D1C41C31EF1570C00E0FF49 /* MainViewController.m */,
+				6D1C41C41EF1570C00E0FF49 /* Main.storyboard */,
 				6D68219A1EEE332A006BD1A0 /* Assets.xcassets */,
 				6D68219C1EEE332A006BD1A0 /* LaunchScreen.storyboard */,
 				6D68219F1EEE332A006BD1A0 /* Info.plist */,
@@ -172,8 +172,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				6D68219E1EEE332A006BD1A0 /* LaunchScreen.storyboard in Resources */,
+				6D1C41CA1EF1570C00E0FF49 /* NumberEditView.xib in Resources */,
 				6D68219B1EEE332A006BD1A0 /* Assets.xcassets in Resources */,
-				6D6821991EEE332A006BD1A0 /* Main.storyboard in Resources */,
+				6D1C41CC1EF1570C00E0FF49 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -184,26 +185,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6D6821931EEE332A006BD1A0 /* AppDelegate.m in Sources */,
+				6D1C41C51EF1570C00E0FF49 /* AppDelegate.m in Sources */,
+				6D1C41C81EF1570C00E0FF49 /* Matrix.m in Sources */,
 				6D6821901EEE332A006BD1A0 /* main.m in Sources */,
-				6D17CD3A1EEFF25700235D2F /* Matrix.m in Sources */,
-				6D5BE8941EEE63AA00346B25 /* MainViewController.m in Sources */,
-				6D6821A71EEE334A006BD1A0 /* LAView.m in Sources */,
-				6D5BE8971EEE680600346B25 /* LATextField.m in Sources */,
+				6D1C41C71EF1570C00E0FF49 /* LATextField.m in Sources */,
+				6D1C41CB1EF1570C00E0FF49 /* MainViewController.m in Sources */,
+				6D1C41C61EF1570C00E0FF49 /* LAView.m in Sources */,
+				6D1C41C91EF1570C00E0FF49 /* NumberEditView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		6D6821971EEE332A006BD1A0 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				6D6821981EEE332A006BD1A0 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		6D68219C1EEE332A006BD1A0 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

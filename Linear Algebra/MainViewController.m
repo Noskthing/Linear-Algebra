@@ -8,18 +8,21 @@
 
 #import "MainViewController.h"
 #import "LATextField.h"
+#import "NumberEditView.h"
 
 static NSString * MainVCTableViewCellID = @"MainVCTableViewCellID";
 
-@interface MainViewController ()<UITableViewDelegate,UITableViewDataSource>
+@interface MainViewController ()<LATextFieldViewDelegate>
 
-@property (nonatomic, strong)NSMutableArray * dataSource;
+
 
 @property (nonatomic, strong)UITableView * tableView;
 
 @property (nonatomic, strong)LATextField * textField;
 
 @property (nonatomic, assign)BOOL keybordIsShow;
+
+@property (nonatomic, strong)NumberEditView * numberView;
 @end
 
 @implementation MainViewController
@@ -30,102 +33,108 @@ static NSString * MainVCTableViewCellID = @"MainVCTableViewCellID";
     
     [self initVar];
     [self createUI];
-    
 }
 
 - (void)initVar
 {
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(keyboardWillShow:)
-                                                 name:UIKeyboardWillShowNotification
-                                               object:nil];
     
-    //监听当键将要退出时
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(keyboardWillHide:)
-                                                 name:UIKeyboardWillHideNotification
-                                               object:nil];
-    
-    self.dataSource = [NSMutableArray array];
-    self.keybordIsShow = NO;
 }
 
 -(void)createUI
 {
-    self.view.backgroundColor = [UIColor grayColor];
-//    
-//    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height - 50) style:UITableViewStylePlain];
-//    self.tableView.delegate = self;
-//    self.tableView.dataSource = self;
-//    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:MainVCTableViewCellID];
-//    [self.view addSubview:self.tableView];
-//    
-//    self.textField = [[LATextField alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.tableView.frame), self.view.frame.size.width, 50)];
-//    [self.textField.okBtn addTarget:self action:@selector(okBtnTouched:) forControlEvents:UIControlEventTouchUpInside];
-//    [self.view addSubview:self.textField];
+    self.view.backgroundColor = [UIColor colorWithRed:227/255.0 green:231/255.0 blue:232/255.0 alpha:1.];
     LATextFieldView * textView = [[LATextFieldView alloc] initWithFrame:CGRectMake(0, [UIScreen mainScreen].bounds.size.height * 0.55, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height * 0.45)];
+    textView.delegate = self;
     [self.view addSubview:textView];
+    
+    self.numberView = [[[NSBundle mainBundle] loadNibNamed:@"NumberEditView" owner:self options:nil] lastObject];
+    self.numberView.hidden = YES;
+    self.numberView.backgroundColor = [UIColor colorWithRed:227/255.0 green:231/255.0 blue:232/255.0 alpha:1.];;
+    self.numberView.frame = CGRectMake(0, [UIScreen mainScreen].bounds.size.height * 0.55 - 35, self.view.frame.size.width, 30);
+    [self.view addSubview:self.numberView];
 }
 
-#pragma mark  textfield events
-- (void)keyboardWillShow:(NSNotification *)notification
+#pragma mark  textViewDelegate
+- (void)textFieldViewNumberButtonTouched:(UIButton *)button Matrix:(Matrix *)martix Chars:(NSArray *)chars IsNegative:(BOOL)isNegative TextFieldView:(LATextFieldView *)textFieldView
 {
-    if (self.keybordIsShow)
+    [self layoutNumberEditViewWithMartix:martix IsNegative:isNegative Chars:chars];
+}
+
+- (void)textFieldViewSymbolButtonTouched:(UIButton *)button Matrix:(Matrix *)martix Chars:(NSArray *)chars IsNegative:(BOOL)isNegative TextFieldView:(LATextFieldView *)textFieldView
+{
+    [self layoutNumberEditViewWithMartix:martix IsNegative:isNegative Chars:chars];
+    switch (button.tag - 50)
     {
-        return;
+        case 0:
+        {
+            //det
+        }
+            break;
+        case 1:
+        {
+            //A-1
+        }
+            break;
+        case 2:
+        {
+            //AT
+        }
+            break;
+        case 3:
+        {
+            //C
+        }
+            break;
+        case 4:
+        {
+            //x
+        }
+            break;
+        case 5:
+        {
+            //huanhang
+        }
+            break;
+        case 6:
+        {
+            //next
+        }
+            break;
+        case 7:
+        {
+            //equal
+        }
+            break;
+        case 8:
+        {
+            //.
+        }
+            break;
+        case 9:
+        {
+            //+/-
+        }
+            break;
+        default:
+            break;
     }
-    CGRect kbRect = [notification.userInfo[@"UIKeyboardBoundsUserInfoKey"] CGRectValue];
-
-    NSLog(@"--------%@",notification.userInfo);
-    CGRect TVRect = self.tableView.frame;
-    NSLog(@"---------%f",kbRect.size.height);
-    TVRect.size.height -= kbRect.size.height;
-    self.tableView.frame = TVRect;
-    
-    
-    CGRect TFRext = self.textField.frame;
-    TFRext.origin.y -= kbRect.size.height;
-    self.textField.frame = TFRext;
-    
-    self.keybordIsShow = YES;
 }
 
-- (void)keyboardWillHide:(NSNotification *)notification
+- (void)layoutNumberEditViewWithMartix:(Matrix *)martix IsNegative:(BOOL)isNegative Chars:(NSArray *)chars
 {
-    CGRect TVRect = self.tableView.frame;
-    TVRect.size.height = self.view.frame.size.height - 50;
-    self.tableView.frame = TVRect;
+    self.numberView.hidden = (chars.count == 0 || (martix.column == martix.currentColumn && martix.column != -1));
     
-    CGRect TFRext = self.textField.frame;
-    TFRext.origin.y = CGRectGetMaxY(self.tableView.frame);
-    self.textField.frame = TFRext;
-    
-    self.keybordIsShow = NO;
-}
-
-- (void)okBtnTouched:(UIButton *)btn
-{
-    [_dataSource addObject:self.textField.text];
-    [self.tableView reloadData];
-    [self.textField resignFirstResponder];
-}
-
-#pragma mark  tableView delegate
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return  self.dataSource.count;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:MainVCTableViewCellID forIndexPath:indexPath];
-    cell.textLabel.text = self.dataSource[indexPath.row];
-    return cell;
-}
-
--(void)dealloc
-{
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
+    NSMutableString * str = [NSMutableString string];
+    if (isNegative)
+    {
+        [str appendString:@"-"];
+    }
+    for (NSString * s in chars)
+    {
+        [str appendString:s];
+    }
+    self.numberView.numberLabel.text = str;
+    self.numberView.rowLabel.text = [NSString stringWithFormat:@"%ld",martix.row];
+    self.numberView.columnLabel.text = [NSString stringWithFormat:@"%ld",martix.currentColumn + 1];
 }
 @end
