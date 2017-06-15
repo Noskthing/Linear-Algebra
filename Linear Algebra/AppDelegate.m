@@ -17,6 +17,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+
     MainViewController * vc = [[MainViewController alloc] init];
     self.window.rootViewController = vc;
     return YES;

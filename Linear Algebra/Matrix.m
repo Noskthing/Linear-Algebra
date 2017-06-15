@@ -29,6 +29,12 @@
     return self;
 }
 
+
+- (NSInteger)getColumn
+{
+    return _column == -1?_currentColumn:_column;
+}
+
 #pragma mark add methods
 -(BOOL)addObject:(id)object
 {
@@ -134,6 +140,11 @@
 #pragma mark  get methods
 - (id)getObjectAtRow:(NSInteger)row Column:(NSInteger)column
 {
+    return [self getObjectAtRow:row Column:column NoneValue:@"0"];
+}
+
+- (id)getObjectAtRow:(NSInteger)row Column:(NSInteger)column NoneValue:(NSString *)str
+{
     NSInteger c = _column == -1?_currentColumn:_column;
     NSInteger index = row * (c + 1) + column;
     
@@ -141,7 +152,12 @@
     {
         return _array[index];
     }
-    return @"0";
+    return str;
+}
+
+- (NSInteger)getRealColumn
+{
+    return _column == -1?_currentColumn:_column;
 }
 
 #pragma mark  others

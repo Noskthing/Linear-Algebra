@@ -31,4 +31,6 @@
 
 #pragma mark  get methods
 - (id)getObjectAtRow:(NSInteger)row Column:(NSInteger)column;
+- (id)getObjectAtRow:(NSInteger)row Column:(NSInteger)column NoneValue:(NSString *)str;
+- (NSInteger)getRealColumn;
 @end

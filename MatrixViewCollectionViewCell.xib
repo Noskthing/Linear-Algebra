@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="MatrixViewCollectionViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="171" height="101"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="171" height="101"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zvo-Yj-cII">
+                        <rect key="frame" x="0.0" y="0.0" width="171" height="99"/>
+                        <color key="backgroundColor" red="0.8901960784313725" green="0.90588235294117647" blue="0.90980392156862744" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="15"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0bZ-Nv-OBa">
+                        <rect key="frame" x="0.0" y="99" width="171" height="2"/>
+                        <color key="backgroundColor" red="0.1019478068" green="0.10196910050000001" blue="0.1019431576" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="zvo-Yj-cII" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="455-Na-r2Q"/>
+                <constraint firstAttribute="trailing" secondItem="0bZ-Nv-OBa" secondAttribute="trailing" id="5aF-Jd-Z1q"/>
+                <constraint firstItem="0bZ-Nv-OBa" firstAttribute="top" secondItem="zvo-Yj-cII" secondAttribute="bottom" id="H7z-bz-oJq"/>
+                <constraint firstAttribute="trailing" secondItem="zvo-Yj-cII" secondAttribute="trailing" id="Oef-KY-ZWQ"/>
+                <constraint firstAttribute="bottom" secondItem="zvo-Yj-cII" secondAttribute="bottom" constant="2" id="RTX-eC-WUS"/>
+                <constraint firstItem="0bZ-Nv-OBa" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="UaO-4Q-BEv"/>
+                <constraint firstItem="zvo-Yj-cII" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="X3Q-bl-8Wu"/>
+                <constraint firstAttribute="bottom" secondItem="0bZ-Nv-OBa" secondAttribute="bottom" id="uuq-UT-xhh"/>
+            </constraints>
+            <size key="customSize" width="171" height="101"/>
+            <connections>
+                <outlet property="line" destination="0bZ-Nv-OBa" id="DOT-dw-dp2"/>
+                <outlet property="numberLabel" destination="zvo-Yj-cII" id="Z4G-yu-60L"/>
+            </connections>
+            <point key="canvasLocation" x="-309.5" y="37.5"/>
+        </collectionViewCell>
+    </objects>
+</document>

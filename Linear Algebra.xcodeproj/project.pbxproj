@@ -8,13 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		6D1C41C51EF1570C00E0FF49 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D1C41B81EF1570C00E0FF49 /* AppDelegate.m */; };
-		6D1C41C61EF1570C00E0FF49 /* LAView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D1C41BA1EF1570C00E0FF49 /* LAView.m */; };
 		6D1C41C71EF1570C00E0FF49 /* LATextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D1C41BC1EF1570C00E0FF49 /* LATextField.m */; };
 		6D1C41C81EF1570C00E0FF49 /* Matrix.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D1C41BE1EF1570C00E0FF49 /* Matrix.m */; };
 		6D1C41C91EF1570C00E0FF49 /* NumberEditView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D1C41C01EF1570C00E0FF49 /* NumberEditView.m */; };
 		6D1C41CA1EF1570C00E0FF49 /* NumberEditView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D1C41C11EF1570C00E0FF49 /* NumberEditView.xib */; };
 		6D1C41CB1EF1570C00E0FF49 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D1C41C31EF1570C00E0FF49 /* MainViewController.m */; };
 		6D1C41CC1EF1570C00E0FF49 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D1C41C41EF1570C00E0FF49 /* Main.storyboard */; };
+		6D37DA3D1EF230F500FD8562 /* MatrixView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D37DA3C1EF230F500FD8562 /* MatrixView.m */; };
+		6D37DA461EF251E600FD8562 /* MatrixViewCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D37DA441EF251E600FD8562 /* MatrixViewCollectionViewCell.m */; };
+		6D37DA471EF251E600FD8562 /* MatrixViewCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D37DA451EF251E600FD8562 /* MatrixViewCollectionViewCell.xib */; };
 		6D6821901EEE332A006BD1A0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D68218F1EEE332A006BD1A0 /* main.m */; };
 		6D68219B1EEE332A006BD1A0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6D68219A1EEE332A006BD1A0 /* Assets.xcassets */; };
 		6D68219E1EEE332A006BD1A0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D68219C1EEE332A006BD1A0 /* LaunchScreen.storyboard */; };
@@ -23,8 +25,6 @@
 /* Begin PBXFileReference section */
 		6D1C41B71EF1570C00E0FF49 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		6D1C41B81EF1570C00E0FF49 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		6D1C41B91EF1570C00E0FF49 /* LAView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LAView.h; sourceTree = "<group>"; };
-		6D1C41BA1EF1570C00E0FF49 /* LAView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LAView.m; sourceTree = "<group>"; };
 		6D1C41BB1EF1570C00E0FF49 /* LATextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LATextField.h; sourceTree = "<group>"; };
 		6D1C41BC1EF1570C00E0FF49 /* LATextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LATextField.m; sourceTree = "<group>"; };
 		6D1C41BD1EF1570C00E0FF49 /* Matrix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Matrix.h; sourceTree = "<group>"; };
@@ -35,6 +35,11 @@
 		6D1C41C21EF1570C00E0FF49 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		6D1C41C31EF1570C00E0FF49 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		6D1C41C41EF1570C00E0FF49 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		6D37DA3B1EF230F500FD8562 /* MatrixView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MatrixView.h; sourceTree = "<group>"; };
+		6D37DA3C1EF230F500FD8562 /* MatrixView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MatrixView.m; sourceTree = "<group>"; };
+		6D37DA431EF251E600FD8562 /* MatrixViewCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MatrixViewCollectionViewCell.h; path = ../MatrixViewCollectionViewCell.h; sourceTree = "<group>"; };
+		6D37DA441EF251E600FD8562 /* MatrixViewCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MatrixViewCollectionViewCell.m; path = ../MatrixViewCollectionViewCell.m; sourceTree = "<group>"; };
+		6D37DA451EF251E600FD8562 /* MatrixViewCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MatrixViewCollectionViewCell.xib; path = ../MatrixViewCollectionViewCell.xib; sourceTree = "<group>"; };
 		6D68218B1EEE332A006BD1A0 /* Linear Algebra.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Linear Algebra.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D68218F1EEE332A006BD1A0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		6D68219A1EEE332A006BD1A0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -54,6 +59,56 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6D37DA481EF2568300FD8562 /* DataStructure */ = {
+			isa = PBXGroup;
+			children = (
+				6D1C41BD1EF1570C00E0FF49 /* Matrix.h */,
+				6D1C41BE1EF1570C00E0FF49 /* Matrix.m */,
+			);
+			name = DataStructure;
+			sourceTree = "<group>";
+		};
+		6D37DA491EF256B200FD8562 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				6D37DA4C1EF2570100FD8562 /* EditView */,
+				6D37DA4B1EF256E500FD8562 /* MatrixView */,
+				6D37DA4A1EF256CC00FD8562 /* TextView */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		6D37DA4A1EF256CC00FD8562 /* TextView */ = {
+			isa = PBXGroup;
+			children = (
+				6D1C41BB1EF1570C00E0FF49 /* LATextField.h */,
+				6D1C41BC1EF1570C00E0FF49 /* LATextField.m */,
+			);
+			name = TextView;
+			sourceTree = "<group>";
+		};
+		6D37DA4B1EF256E500FD8562 /* MatrixView */ = {
+			isa = PBXGroup;
+			children = (
+				6D37DA3B1EF230F500FD8562 /* MatrixView.h */,
+				6D37DA3C1EF230F500FD8562 /* MatrixView.m */,
+				6D37DA431EF251E600FD8562 /* MatrixViewCollectionViewCell.h */,
+				6D37DA441EF251E600FD8562 /* MatrixViewCollectionViewCell.m */,
+				6D37DA451EF251E600FD8562 /* MatrixViewCollectionViewCell.xib */,
+			);
+			name = MatrixView;
+			sourceTree = "<group>";
+		};
+		6D37DA4C1EF2570100FD8562 /* EditView */ = {
+			isa = PBXGroup;
+			children = (
+				6D1C41BF1EF1570C00E0FF49 /* NumberEditView.h */,
+				6D1C41C01EF1570C00E0FF49 /* NumberEditView.m */,
+				6D1C41C11EF1570C00E0FF49 /* NumberEditView.xib */,
+			);
+			name = EditView;
+			sourceTree = "<group>";
+		};
 		6D6821821EEE332A006BD1A0 = {
 			isa = PBXGroup;
 			children = (
@@ -74,23 +129,16 @@
 		6D68218D1EEE332A006BD1A0 /* Linear Algebra */ = {
 			isa = PBXGroup;
 			children = (
-				6D1C41B71EF1570C00E0FF49 /* AppDelegate.h */,
-				6D1C41B81EF1570C00E0FF49 /* AppDelegate.m */,
-				6D1C41B91EF1570C00E0FF49 /* LAView.h */,
-				6D1C41BA1EF1570C00E0FF49 /* LAView.m */,
-				6D1C41BB1EF1570C00E0FF49 /* LATextField.h */,
-				6D1C41BC1EF1570C00E0FF49 /* LATextField.m */,
-				6D1C41BD1EF1570C00E0FF49 /* Matrix.h */,
-				6D1C41BE1EF1570C00E0FF49 /* Matrix.m */,
-				6D1C41BF1EF1570C00E0FF49 /* NumberEditView.h */,
-				6D1C41C01EF1570C00E0FF49 /* NumberEditView.m */,
-				6D1C41C11EF1570C00E0FF49 /* NumberEditView.xib */,
+				6D37DA491EF256B200FD8562 /* View */,
+				6D37DA481EF2568300FD8562 /* DataStructure */,
 				6D1C41C21EF1570C00E0FF49 /* MainViewController.h */,
 				6D1C41C31EF1570C00E0FF49 /* MainViewController.m */,
 				6D1C41C41EF1570C00E0FF49 /* Main.storyboard */,
 				6D68219A1EEE332A006BD1A0 /* Assets.xcassets */,
 				6D68219C1EEE332A006BD1A0 /* LaunchScreen.storyboard */,
 				6D68219F1EEE332A006BD1A0 /* Info.plist */,
+				6D1C41B71EF1570C00E0FF49 /* AppDelegate.h */,
+				6D1C41B81EF1570C00E0FF49 /* AppDelegate.m */,
 				6D68218E1EEE332A006BD1A0 /* Supporting Files */,
 			);
 			path = "Linear Algebra";
@@ -174,6 +222,7 @@
 				6D68219E1EEE332A006BD1A0 /* LaunchScreen.storyboard in Resources */,
 				6D1C41CA1EF1570C00E0FF49 /* NumberEditView.xib in Resources */,
 				6D68219B1EEE332A006BD1A0 /* Assets.xcassets in Resources */,
+				6D37DA471EF251E600FD8562 /* MatrixViewCollectionViewCell.xib in Resources */,
 				6D1C41CC1EF1570C00E0FF49 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -188,10 +237,11 @@
 				6D1C41C51EF1570C00E0FF49 /* AppDelegate.m in Sources */,
 				6D1C41C81EF1570C00E0FF49 /* Matrix.m in Sources */,
 				6D6821901EEE332A006BD1A0 /* main.m in Sources */,
+				6D37DA461EF251E600FD8562 /* MatrixViewCollectionViewCell.m in Sources */,
 				6D1C41C71EF1570C00E0FF49 /* LATextField.m in Sources */,
 				6D1C41CB1EF1570C00E0FF49 /* MainViewController.m in Sources */,
-				6D1C41C61EF1570C00E0FF49 /* LAView.m in Sources */,
 				6D1C41C91EF1570C00E0FF49 /* NumberEditView.m in Sources */,
+				6D37DA3D1EF230F500FD8562 /* MatrixView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

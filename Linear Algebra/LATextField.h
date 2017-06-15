@@ -13,9 +13,11 @@
 @protocol LATextFieldViewDelegate <NSObject>
 
 @required
-- (void)textFieldViewNumberButtonTouched:(UIButton *)button Matrix:(Matrix *)martix Chars:(NSArray *)chars IsNegative:(BOOL)isNegative TextFieldView:(LATextFieldView *)textFieldView;
 
-- (void)textFieldViewSymbolButtonTouched:(UIButton *)button Matrix:(Matrix *)martix Chars:(NSArray *)chars IsNegative:(BOOL)isNegative TextFieldView:(LATextFieldView *)textFieldView;
+- (void)textFieldViewNumberButtonTouched:(UIButton *)button Matrix:(Matrix *)matrix Chars:(NSArray *)chars IsNegative:(BOOL)isNegative TextFieldView:(LATextFieldView *)textFieldView;
+
+- (void)textFieldViewSymbolButtonTouched:(UIButton *)button Matrix:(Matrix *)matrix Chars:(NSArray *)chars IsNegative:(BOOL)isNegative TextFieldView:(LATextFieldView *)textFieldView;
+
 @end
 
 @interface LATextFieldView : UIView

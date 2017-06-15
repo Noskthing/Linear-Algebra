@@ -13,6 +13,7 @@
 @interface LATextFieldButton : UIView
 
 @property (nonatomic, strong) UIButton * button;
+
 @property (nonatomic, strong) UIView * lineView;
 
 - (void)setButtonTitle:(NSString *)title;
@@ -174,8 +175,15 @@ static const NSInteger column = 4;
     _isNegative = NO;
     [_tempStrArray removeAllObjects];
     
+    [self setPointBtnStatus:YES];
+}
+
+- (void)setPointBtnStatus:(BOOL)enable
+{
+    self.isFloat = !enable;
+    
     UIButton * pointBtn = [self viewWithTag:50 + 8];
-    pointBtn.enabled = YES;
+    pointBtn.enabled = enable;
 }
 
 - (void)numberButtonTouched:(UIButton *)button
@@ -222,7 +230,8 @@ static const NSInteger column = 4;
             {
                 if ([_tempStrArray[_tempStrArray.count - 1] isEqualToString:@"."])
                 {
-                    self.isFloat = NO;
+                    
+                    [self setPointBtnStatus:NO];
                 }
                 [_tempStrArray removeObjectAtIndex:_tempStrArray.count - 1];
             }
@@ -255,12 +264,12 @@ static const NSInteger column = 4;
                     
                     if ([_tempStrArray[_tempStrArray.count - 1] isEqualToString:@"."])
                     {
-                        self.isFloat = YES;
+                        [self setPointBtnStatus:NO];
                         [_tempStrArray removeObjectAtIndex:_tempStrArray.count - 1];
                     }
                     else
                     {
-                        self.isFloat = NO;
+                        [self setPointBtnStatus:YES];
                     }
                 }
             }
@@ -291,6 +300,11 @@ static const NSInteger column = 4;
             }
             else
             {
+                if ([_tempStrArray[_tempStrArray.count - 1] isEqualToString:@"."])
+                {
+                    [_tempStrArray removeObjectAtIndex:_tempStrArray.count - 1];
+                }
+                
                 if (_isNegative)
                 {
                     [str appendString:@"-"];
