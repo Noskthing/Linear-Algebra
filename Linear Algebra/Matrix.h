@@ -19,6 +19,7 @@
 #pragma mark others
 - (void)log;
 - (BOOL)isFull;
+- (BOOL)isTransposed;
 - (Matrix *)transpose;
 
 #pragma mark add methods

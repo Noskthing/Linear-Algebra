@@ -91,6 +91,7 @@ static NSString * MainVCTableViewCellID = @"MainVCTableViewCellID";
         case 2:
         {
             //AT
+            [self reloadMatrixView:matrix];
         }
             break;
         case 3:

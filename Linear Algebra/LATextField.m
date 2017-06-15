@@ -116,10 +116,12 @@ static const NSInteger column = 4;
             {
                 //det
                 btn.button.tag =  50 + 0;
+                btn.button.enabled = NO;
             }
             else if (r == 0 && c == 1)
             {
                 //A-1
+                btn.button.enabled = NO;
                 btn.button.tag =  50 + 1;
             }
             else if (r == 0 && c == 2)
@@ -135,6 +137,7 @@ static const NSInteger column = 4;
             else if (r == 1 && c == 3)
             {
                 //x
+                btn.button.enabled = NO;
                 btn.button.tag =  50 + 4;
             }
             else if (r == 2 && c == 3)
@@ -150,6 +153,7 @@ static const NSInteger column = 4;
             else if (r == 4 && c == 3)
             {
                 //equal
+                btn.button.enabled = NO;
                 btn.button.tag =  50 + 7;
             }
             else if (r == 4 && c == 0)
@@ -211,15 +215,15 @@ static const NSInteger column = 4;
         {
             //A-1
             NSLog(@"A-1 click");
-            Matrix * a = [_matrix transpose];
-            [a log];
+            [_matrix log];
         }
             break;
         case 2:
         {
             //AT
             NSLog(@"AT click");
-            [_matrix log];
+            Matrix * a = [_matrix transpose];
+            _matrix = a;
         }
             break;
         case 3:
@@ -231,9 +235,13 @@ static const NSInteger column = 4;
                 if ([_tempStrArray[_tempStrArray.count - 1] isEqualToString:@"."])
                 {
                     
-                    [self setPointBtnStatus:NO];
+                    [self setPointBtnStatus:YES];
                 }
                 [_tempStrArray removeObjectAtIndex:_tempStrArray.count - 1];
+                if (_tempStrArray.count == 1 && [_tempStrArray[0] isEqualToString:@"0"])
+                {
+                    [_tempStrArray removeObjectAtIndex:0];
+                }
             }
             else
             {
@@ -247,7 +255,7 @@ static const NSInteger column = 4;
                     
                     if (_tempStrArray.count == 0)
                     {
-                        self.isFloat = NO;
+                        [self setPointBtnStatus:YES];
                         self.isNegative = NO;
                         break;
                     }
@@ -353,6 +361,9 @@ static const NSInteger column = 4;
     
     UIButton * nextBtn = [self viewWithTag:50 + 6];
     nextBtn.enabled = ![_matrix isFull];
+    
+    UIButton * tranposeBtn = [self viewWithTag:50 + 2];
+    tranposeBtn.enabled = [_matrix isTransposed];
     [self.delegate textFieldViewSymbolButtonTouched:button Matrix:_matrix Chars:_tempStrArray IsNegative:_isNegative TextFieldView:self];
 }
 @end

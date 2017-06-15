@@ -186,7 +186,12 @@
 
 - (BOOL)isFull
 {
-    return _columnIsCertain && ((_row + 1) * (_column + 1) == [_array count]);
+    return (_columnIsCertain && ((_row + 1) * (_column + 1) == [_array count]));
+}
+
+- (BOOL)isTransposed
+{
+    return (_columnIsCertain && ((_row + 1) * (_column + 1) == [_array count])) || (!_columnIsCertain && _currentColumn >= 0);
 }
 
 - (Matrix *)transpose

@@ -18,6 +18,14 @@
 
 - (void)textFieldViewSymbolButtonTouched:(UIButton *)button Matrix:(Matrix *)matrix Chars:(NSArray *)chars IsNegative:(BOOL)isNegative TextFieldView:(LATextFieldView *)textFieldView;
 
+@optional
+- (BOOL)textFieldViewEqualButtonIsEnable:(Matrix *)matrix TextFieldView:(LATextFieldView *)textFieldView;
+
+- (BOOL)textFieldViewMultiplicationButtonIsEnable:(Matrix *)matrix TextFieldView:(LATextFieldView *)textFieldView;
+
+- (BOOL)textFieldViewDeterminantButtonIsEnable:(Matrix *)matrix TextFieldView:(LATextFieldView *)textFieldView;
+
+- (BOOL)textFieldViewInverseButtonIsEnable:(Matrix *)matrix TextFieldView:(LATextFieldView *)textFieldView;
 @end
 
 @interface LATextFieldView : UIView

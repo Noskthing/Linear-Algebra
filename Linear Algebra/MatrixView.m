@@ -46,24 +46,26 @@
 
 - (void)drawRect:(CGRect)rect
 {
-    NSLog(@"x is %f y is %f w is %f h is %f",rect.origin.x,rect.origin.y,rect.size.width,rect.size.height);
-    UIBezierPath * leftPath = [UIBezierPath bezierPath];
-    [leftPath moveToPoint:CGPointMake(7, 2)];
-    [leftPath addLineToPoint:CGPointMake(2, 2)];
-    [leftPath addLineToPoint:CGPointMake(2, rect.size.height - 2)];
-    [leftPath addLineToPoint:CGPointMake(7, rect.size.height - 2)];
-    
-    leftPath.lineWidth = 1.;
-    [leftPath stroke];
-    
-    UIBezierPath * rightPath = [UIBezierPath bezierPath];
-    [rightPath moveToPoint:CGPointMake(rect.size.width - 7, 2)];
-    [rightPath addLineToPoint:CGPointMake(rect.size.width - 2, 2)];
-    [rightPath addLineToPoint:CGPointMake(rect.size.width - 2, rect.size.height - 2)];
-    [rightPath addLineToPoint:CGPointMake(rect.size.width - 7, rect.size.height - 2)];
-    
-    rightPath.lineWidth = 1.;
-    [rightPath stroke];
+    if (self.matrix && (self.matrix.row + 1) * ([self.matrix getRealColumn] + 1) > 0)
+    {
+        UIBezierPath * leftPath = [UIBezierPath bezierPath];
+        [leftPath moveToPoint:CGPointMake(7, 2)];
+        [leftPath addLineToPoint:CGPointMake(2, 2)];
+        [leftPath addLineToPoint:CGPointMake(2, rect.size.height - 2)];
+        [leftPath addLineToPoint:CGPointMake(7, rect.size.height - 2)];
+        
+        leftPath.lineWidth = 1.;
+        [leftPath stroke];
+        
+        UIBezierPath * rightPath = [UIBezierPath bezierPath];
+        [rightPath moveToPoint:CGPointMake(rect.size.width - 7, 2)];
+        [rightPath addLineToPoint:CGPointMake(rect.size.width - 2, 2)];
+        [rightPath addLineToPoint:CGPointMake(rect.size.width - 2, rect.size.height - 2)];
+        [rightPath addLineToPoint:CGPointMake(rect.size.width - 7, rect.size.height - 2)];
+        
+        rightPath.lineWidth = 1.;
+        [rightPath stroke];
+    }
 }
 
 - (void)setMatrix:(Matrix *)matrix
