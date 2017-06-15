@@ -116,6 +116,10 @@
         else
         {
             _currentColumn --;
+            if (_row == 0)
+            {
+                _column --;
+            }
             NSString * temp = _array[_array.count - 1];
             BOOL isFloat = NO;
             for (int i = 0; i < [temp length]; i ++)
