@@ -1,3 +1,3 @@
-# Linear-Algebra
+# Matrix Calcultor
 
 实现一个简单的矩阵计算器。进行中...
