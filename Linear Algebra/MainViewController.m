@@ -23,9 +23,11 @@ static NSString * MainVCTableViewCellID = @"MainVCTableViewCellID";
 
 @property (nonatomic, strong)LATextField * textField;
 
-@property (nonatomic, assign)BOOL keybordIsShow;
-
 @property (nonatomic, strong)NumberEditView * numberView;
+
+@property (nonatomic, strong)UILabel * multipSymbolView;
+
+@property (nonatomic, assign)BOOL isMultiply;
 
 @end
 
@@ -35,6 +37,7 @@ static NSString * MainVCTableViewCellID = @"MainVCTableViewCellID";
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    _isMultiply = NO;
     [self createUI];
 }
 
@@ -45,6 +48,20 @@ static NSString * MainVCTableViewCellID = @"MainVCTableViewCellID";
     _matrixViewA.layer.anchorPoint = CGPointMake(1, 0.5);
     _matrixViewA.layer.position = CGPointMake(self.view.frame.size.width - 5, (self.view.bounds.size.height * 0.55 - 35)/2);
     [self.view addSubview:_matrixViewA];
+    
+    _multipSymbolView = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 10, 10)];
+    _multipSymbolView.layer.anchorPoint = CGPointMake(1, 0.5);
+    _multipSymbolView.text = @"x";
+    _multipSymbolView.textAlignment = NSTextAlignmentCenter;
+    _multipSymbolView.backgroundColor = [UIColor colorWithRed:227/255.0 green:231/255.0 blue:232/255.0 alpha:1.];
+    [self.view addSubview:_multipSymbolView];
+    
+    _matrixViewB = [[MatrixView alloc] init];
+    _matrixViewB.hidden = YES;
+    _matrixViewB.backgroundColor = [UIColor colorWithRed:227/255.0 green:231/255.0 blue:232/255.0 alpha:1.];
+    _matrixViewB.layer.anchorPoint = CGPointMake(1, 0.5);
+    _matrixViewB.layer.position = CGPointMake(self.view.frame.size.width - 5, (self.view.bounds.size.height * 0.55 - 35)/2);
+    [self.view addSubview:_matrixViewB];
     
     self.view.backgroundColor = [UIColor colorWithRed:227/255.0 green:231/255.0 blue:232/255.0 alpha:1.];
     LATextFieldView * textView = [[LATextFieldView alloc] initWithFrame:CGRectMake(0, [UIScreen mainScreen].bounds.size.height * 0.55, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height * 0.45)];
@@ -58,22 +75,47 @@ static NSString * MainVCTableViewCellID = @"MainVCTableViewCellID";
     [self.view addSubview:self.numberView];
 }
 
-- (void)reloadMatrixView:(Matrix *)matrix
+- (void)reloadMatrixView:(NSArray *)matrixs
 {
-    _matrixViewA.frame = CGRectMake(0, 0, 50 * ([matrix getRealColumn] + 1) + 6, 20 * (matrix.row + 1) + 6);
-    _matrixViewA.layer.anchorPoint = CGPointMake(1, 0.5);
-    _matrixViewA.layer.position = CGPointMake(self.view.frame.size.width - 5, (self.view.bounds.size.height * 0.55 - 35)/2);
-    [_matrixViewA setMatrix:matrix];
+    if (matrixs.count == 1)
+    {
+        Matrix * matrix = matrixs[0];
+        _matrixViewA.frame = CGRectMake(0, 0, 50 * ([matrix getRealColumn] + 1) + 6, 20 * (matrix.row + 1) + 6);
+        _matrixViewA.layer.position = CGPointMake(self.view.frame.size.width - 5, (self.view.bounds.size.height * 0.55 - 35)/2);
+        [_matrixViewA setMatrix:matrix];
+        
+        _matrixViewB.hidden = YES;
+        _multipSymbolView.hidden = YES;
+    }
+    else
+    {
+        _matrixViewB.hidden = NO;
+        _multipSymbolView.hidden = NO;
+        
+        Matrix * matrixB = matrixs[1];
+        _matrixViewB.frame = CGRectMake(0, 0, 50 * ([matrixB getRealColumn] + 1) + 6, 20 * (matrixB.row + 1) + 6);
+        _matrixViewB.layer.position = CGPointMake(self.view.frame.size.width - 5, (self.view.bounds.size.height * 0.55 - 35)/2);
+        [_matrixViewB setMatrix:matrixB];
+        
+        _multipSymbolView.layer.position = CGPointMake(CGRectGetMinX(_matrixViewB.frame) - 10, (self.view.bounds.size.height * 0.55 - 35)/2);
+        
+        Matrix * matrixA = matrixs[0];
+        _matrixViewA.frame = CGRectMake(0, 0, 50 * ([matrixA getRealColumn] + 1) + 6, 20 * (matrixA.row + 1) + 6);
+        _matrixViewA.layer.anchorPoint = CGPointMake(1, 0.5);
+        _matrixViewA.layer.position = CGPointMake(CGRectGetMinX(_multipSymbolView.frame) - 10, (self.view.bounds.size.height * 0.55 - 35)/2);
+    }
 }
 
 #pragma mark  textViewDelegate
-- (void)textFieldViewNumberButtonTouched:(UIButton *)button Matrix:(Matrix *)matrix Chars:(NSArray *)chars IsNegative:(BOOL)isNegative TextFieldView:(LATextFieldView *)textFieldView
+- (void)textFieldViewNumberButtonTouched:(UIButton *)button Matrixs:(NSArray *)matrixs Chars:(NSArray *)chars IsNegative:(BOOL)isNegative TextFieldView:(LATextFieldView *)textFieldView
 {
+    Matrix * matrix = matrixs[matrixs.count - 1];
     [self layoutNumberEditViewWithmatrix:matrix IsNegative:isNegative Chars:chars];
 }
 
-- (void)textFieldViewSymbolButtonTouched:(UIButton *)button Matrix:(Matrix *)matrix Chars:(NSArray *)chars IsNegative:(BOOL)isNegative TextFieldView:(LATextFieldView *)textFieldView
+- (void)textFieldViewSymbolButtonTouched:(UIButton *)button Matrixs:(NSArray *)matrixs Chars:(NSArray *)chars IsNegative:(BOOL)isNegative TextFieldView:(LATextFieldView *)textFieldView
 {
+    Matrix * matrix = matrixs[matrixs.count - 1];
     [self layoutNumberEditViewWithmatrix:matrix IsNegative:isNegative Chars:chars];
     switch (button.tag - 50)
     {
@@ -91,30 +133,36 @@ static NSString * MainVCTableViewCellID = @"MainVCTableViewCellID";
         case 2:
         {
             //AT
-            [self reloadMatrixView:matrix];
+            [self reloadMatrixView:matrixs];
         }
             break;
         case 3:
         {
             //C
-            [self reloadMatrixView:matrix];
+            if (_isMultiply)
+            {
+                _isMultiply = NO;
+            }
+            [self reloadMatrixView:matrixs];
         }
             break;
         case 4:
         {
             //x
+            _isMultiply = YES;
+            [self reloadMatrixView:matrixs];
         }
             break;
         case 5:
         {
             //huanhang
-            [self reloadMatrixView:matrix];
+            [self reloadMatrixView:matrixs];
         }
             break;
         case 6:
         {
             //next
-            [self reloadMatrixView:matrix];
+            [self reloadMatrixView:matrixs];
         }
             break;
         case 7:

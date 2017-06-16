@@ -14,9 +14,9 @@
 
 @required
 
-- (void)textFieldViewNumberButtonTouched:(UIButton *)button Matrix:(Matrix *)matrix Chars:(NSArray *)chars IsNegative:(BOOL)isNegative TextFieldView:(LATextFieldView *)textFieldView;
+- (void)textFieldViewNumberButtonTouched:(UIButton *)button Matrixs:(NSArray *)matrixs Chars:(NSArray *)chars IsNegative:(BOOL)isNegative TextFieldView:(LATextFieldView *)textFieldView;
 
-- (void)textFieldViewSymbolButtonTouched:(UIButton *)button Matrix:(Matrix *)matrix Chars:(NSArray *)chars IsNegative:(BOOL)isNegative TextFieldView:(LATextFieldView *)textFieldView;
+- (void)textFieldViewSymbolButtonTouched:(UIButton *)button Matrixs:(NSArray *)matrixs Chars:(NSArray *)chars IsNegative:(BOOL)isNegative TextFieldView:(LATextFieldView *)textFieldView;
 
 @optional
 - (BOOL)textFieldViewEqualButtonIsEnable:(Matrix *)matrix TextFieldView:(LATextFieldView *)textFieldView;

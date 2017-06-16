@@ -77,6 +77,7 @@
 
 @property (nonatomic, strong)Matrix * matrix;
 
+@property (nonatomic, strong)NSMutableArray * stack;
 @end
 
 static const NSInteger row =5;
@@ -89,8 +90,10 @@ static const NSInteger column = 4;
     if(self = [super initWithFrame:frame])
     {
         _tempStrArray = [NSMutableArray array];
+        _stack = [NSMutableArray array];
         [self initVar];
         _matrix = [[Matrix alloc] init];
+        [_stack addObject:_matrix];
         
         CGFloat buttonWidth = frame.size.width/column;
         CGFloat buttonHeight = frame.size.height/row;
@@ -190,6 +193,18 @@ static const NSInteger column = 4;
     pointBtn.enabled = enable;
 }
 
+- (void)checkButtonsStatus
+{
+    UIButton * nextBtn = [self viewWithTag:50 + 6];
+    nextBtn.enabled = ![_matrix isFull];
+    
+    UIButton * tranposeBtn = [self viewWithTag:50 + 2];
+    tranposeBtn.enabled = [_matrix isTransposed];
+    
+    UIButton * multiBtn = [self viewWithTag:50 + 4];
+    multiBtn.enabled = ([_matrix isTransposed] && _stack.count == 1);
+}
+
 - (void)numberButtonTouched:(UIButton *)button
 {
     NSLog(@"num %ld clicked!",button.tag - 20);
@@ -198,7 +213,7 @@ static const NSInteger column = 4;
         return;
     }
     [_tempStrArray addObject:[NSString stringWithFormat:@"%ld",button.tag - 20]];
-    [self.delegate textFieldViewNumberButtonTouched:button Matrix:_matrix Chars:_tempStrArray IsNegative:_isNegative TextFieldView:self];
+    [self.delegate textFieldViewNumberButtonTouched:button Matrixs:[_stack copy] Chars:_tempStrArray IsNegative:_isNegative TextFieldView:self];
 }
 
 - (void)symbolButtonTouched:(UIButton *)button
@@ -222,8 +237,7 @@ static const NSInteger column = 4;
         {
             //AT
             NSLog(@"AT click");
-            Matrix * a = [_matrix transpose];
-            _matrix = a;
+            [_matrix transpose];
         }
             break;
         case 3:
@@ -255,8 +269,14 @@ static const NSInteger column = 4;
                     
                     if (_tempStrArray.count == 0)
                     {
+                        
                         [self setPointBtnStatus:YES];
                         self.isNegative = NO;
+                        if (_stack.count == 2)
+                        {
+                            _matrix = _stack[0];
+                            [_stack removeObjectAtIndex:1];
+                        }
                         break;
                     }
                     
@@ -287,6 +307,9 @@ static const NSInteger column = 4;
         {
             //x
             NSLog(@"x click");
+            Matrix * nextMatrix = [[Matrix alloc] init];
+            [_stack addObject:nextMatrix];
+            _matrix = nextMatrix;
         }
             break;
         case 5:
@@ -359,12 +382,8 @@ static const NSInteger column = 4;
             break;
     }
     
-    UIButton * nextBtn = [self viewWithTag:50 + 6];
-    nextBtn.enabled = ![_matrix isFull];
-    
-    UIButton * tranposeBtn = [self viewWithTag:50 + 2];
-    tranposeBtn.enabled = [_matrix isTransposed];
-    [self.delegate textFieldViewSymbolButtonTouched:button Matrix:_matrix Chars:_tempStrArray IsNegative:_isNegative TextFieldView:self];
+    [self checkButtonsStatus];
+    [self.delegate textFieldViewSymbolButtonTouched:button Matrixs:[_stack copy] Chars:_tempStrArray IsNegative:_isNegative TextFieldView:self];
 }
 @end
 
