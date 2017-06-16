@@ -20,7 +20,7 @@
 - (void)log;
 - (BOOL)isFull;
 - (BOOL)isTransposed;
-- (Matrix *)transpose;
+- (void)transpose;
 
 #pragma mark add methods
 - (void)newRow;

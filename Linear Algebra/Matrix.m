@@ -116,7 +116,7 @@
         else
         {
             _currentColumn --;
-            if (_row == 0)
+            if (_row == 0 && _column >= 0)
             {
                 _column --;
             }
@@ -198,24 +198,46 @@
     return (_columnIsCertain && ((_row + 1) * (_column + 1) == [_array count])) || (!_columnIsCertain && _currentColumn >= 0);
 }
 
-- (Matrix *)transpose
+- (void)transpose
 {
-    Matrix * new = [[Matrix alloc] init];
-    new.column = _row;
-    new.row = _column == -1?_currentColumn:_column;;
-    
-    NSMutableArray * arr = [NSMutableArray array];
-    for (int i = 0; i <= new.row; i++)
+    for (int i = 0; i < ([self getRealColumn] + 1) * (_row + 1); i ++)
     {
-        for (int j = 0; j <= new.column; j ++)
-        {
-            NSLog(@"%@",[self getObjectAtRow:j Column:i]);
-            [arr addObject:[self getObjectAtRow:j Column:i]];
-        }
+        NSInteger next = [self getNextObjectAtIndex:i Row:_row + 1 Column:[self getRealColumn] + 1];
+        while(next > i)
+            next = [self getNextObjectAtIndex:next Row:_row + 1 Column:[self getRealColumn] + 1];
+        if(next == i)  // 处理当前环
+            [self moveObjectAtIndex:i Row:_row + 1 Column:[self getRealColumn] + 1];
     }
-    [new setDataSource:arr];
-    new.currentColumn = new.column;
-    new.columnIsCertain = (new.row != 0);
-    return new;
+    
+    NSInteger temp = self.column;
+    self.column = self.row;
+    self.row = temp == -1?_currentColumn:temp;
+    self.currentColumn = self.column;
+    self.columnIsCertain = (self.row != 0);
+}
+
+
+- (void)moveObjectAtIndex:(NSInteger)index Row:(NSInteger)row Column:(NSInteger)column
+{
+    NSString * temp = _array[index];
+    NSInteger currentIndex = index;
+    NSInteger previousIndex = [self getPreviousObjectAtIndex:currentIndex Row:row Column:column];
+    while (previousIndex != index)
+    {
+        _array[currentIndex] = _array[previousIndex];
+        currentIndex = previousIndex;
+        previousIndex = [self getPreviousObjectAtIndex:currentIndex Row:row Column:column];
+    }
+    _array[currentIndex] = temp;
+}
+
+- (NSInteger)getNextObjectAtIndex:(NSInteger)index Row:(NSInteger)row Column:(NSInteger)column
+{
+    return (index%column)*row + index/column;
+}
+
+- (NSInteger)getPreviousObjectAtIndex:(NSInteger)index Row:(NSInteger)row Column:(NSInteger)column
+{
+    return (index%row)*column + index/row;
 }
 @end
