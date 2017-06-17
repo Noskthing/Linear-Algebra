@@ -88,8 +88,8 @@
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     MatrixViewCollectionViewCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cellid" forIndexPath:indexPath];
-    NSInteger row = indexPath.row/(self.matrix.column + 1);
-    NSInteger column = indexPath.row%(self.matrix.column + 1);
+    NSInteger row = indexPath.row/([self.matrix getRealColumn] + 1);
+    NSInteger column = indexPath.row%([self.matrix getRealColumn] + 1);
     cell.numberLabel.text = [self.matrix getObjectAtRow:row Column:column NoneValue:@""];
     return cell;
 }

@@ -193,6 +193,21 @@ static const NSInteger column = 4;
     pointBtn.enabled = enable;
 }
 
+- (BOOL)checkEqualButtonStatus
+{
+    if (_stack.count < 2)
+    {
+        return NO;
+    }
+    Matrix * m1 = _stack[0];
+    Matrix * m2 = _stack[1];
+    if (m1.row == [m2 getRealColumn])
+    {
+        return YES;
+    }
+    return NO;
+}
+
 - (void)checkButtonsStatus
 {
     UIButton * nextBtn = [self viewWithTag:50 + 6];
@@ -203,6 +218,9 @@ static const NSInteger column = 4;
     
     UIButton * multiBtn = [self viewWithTag:50 + 4];
     multiBtn.enabled = ([_matrix isTransposed] && _stack.count == 1);
+    
+    UIButton * equalBtn = [self viewWithTag:50 + 7];
+    equalBtn.enabled = [self checkEqualButtonStatus];
 }
 
 - (void)numberButtonTouched:(UIButton *)button
